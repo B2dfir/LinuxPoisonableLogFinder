@@ -1,7 +1,6 @@
 #!/usr/bin/python
 #Poisonable Log Finder V1 20170824
 import sys
-import urllib2
 from StringIO import StringIO
 import pycurl
 
