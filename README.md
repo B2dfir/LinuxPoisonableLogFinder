@@ -1,5 +1,5 @@
 # LinuxPoisonableLogFinder
-Security Testing Tool to identify whether a list of common log files, which may be used for log poisoning, can be accessed from an known local file inclusion vulnerability.
+Security testing tool to identify whether a list of common log files, which may be used for log poisoning, can be accessed from an known local file inclusion vulnerability.
 
 You must identify a LFI vulnerability first, as well as the complete path that provides access to the root directory.
 
