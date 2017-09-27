@@ -100,6 +100,8 @@ LOGS = ["etc/passwd",
 "var/www/log/error_log",
 "var/www/logs/access_log",
 "var/www/logs/access.log",
+"var/log/httpd-access.log",
+"var/log/httpd-error.log",
 "www/logs/proftpd.system.log",]
 for log in LOGS:
 	buffer = StringIO()
