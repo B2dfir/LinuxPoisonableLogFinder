@@ -5,7 +5,7 @@ You must identify a LFI vulnerability first, as well as the complete path that p
 
 Usage: PoisonableLogFinder.py "root LFI URI" "optional terminator"
 
-E.g. PoisonableLogFinder.py "http://192.168.1.10/vuln/index.php?path=../../../../../../" "%00"
+E.g. PoisonableLogFinder.py "hxxp://192.168.1.10/vuln/index.php?path=../../../../../../" "%00"
 
 ## Change Log
 ##### 26 Sep 2017 - V1.1 
